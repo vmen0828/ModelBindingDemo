@@ -1,0 +1,21 @@
+﻿@model DemoViewModel
+@using ModelBindingDemo.Models
+
+@{
+    Layout = null;
+    ViewBag.Title = "Model Binding Test";
+}
+
+@using (Html.BeginForm("Save", "Home", FormMethod.Post))
+{
+    @*test1是單一值 id同名即可*@
+    @Html.TextBoxFor(m => m.test1)
+    <p />
+
+    @*test2是多值 id設置Model[index].property即可*@
+    @Html.TextBoxFor(m => m.test2 , new { @id = "DemoViewModel[0].test2" })
+    @Html.TextBoxFor(m => m.test2 , new { @id2 = "DemoViewModel[0].test2" })
+
+    <input type="submit" value="Submit Data" id="btnSubmit" />
+}
+
